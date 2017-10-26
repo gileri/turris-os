@@ -61,6 +61,7 @@ endef
 Build/Patch:=$(Build/Patch/Default)
 ifneq ($(strip $(PKG_UNPACK)),)
   define Build/Prepare/Default
+	if [ -d src ]; then mkdir -p $(PKG_BUILD_DIR); cp -r src/* $(PKG_BUILD_DIR); fi
 	$(PKG_UNPACK)
 	$(Build/Patch)
   endef
